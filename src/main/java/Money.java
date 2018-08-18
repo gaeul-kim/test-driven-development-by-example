@@ -1,7 +1,7 @@
 /**
  * @author sangsik.kim
  */
-public class Money {
+public class Money implements Expression {
 
     protected Money(int amount, String currency) {
         this.amount = amount;
@@ -21,6 +21,11 @@ public class Money {
 
     public Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
+    }
+
+
+    public Expression plus(Money addend) {
+        return new Sum(this, addend);
     }
 
     public String currency() {
